@@ -1,1 +1,1 @@
-# Plain JavaScript Examples #
+# JavaScript Examples #

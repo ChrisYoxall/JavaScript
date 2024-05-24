@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Test</title>
+</head>
+
+<body>
+    <h1>Test</h1>
+    <p>Open the console to see the results of running the JavaScript</p>
+    <script>
+
+        // Rember to use === for comparison to avoid type coercion when using ==.
+
+        // console.log(1 == "1"); // true (loose equality operator coerces the string to a number)
+        // console.log(1 === "1"); // false (strict equality operator doesn't perform type coercion)
+
+        // console.log(0 == false); // true (loose equality operator coerces the boolean to a number)
+        // console.log(0 === false); // false (strict equality operator doesn't perform type coercion)
+
+
+
+
+        // Remember Objects, Arrays, Functins, Dates, RegExp, Map, Set, WeakMap and WeakSets are reference types in JavaScript.
+
+
+
+
+        // Create an object using the object literal syntax
+        const user = {
+            name: 'Chris',
+            age: 50,
+            greet() {
+                console.log(`Hello, my name is ${this.name} and I am ${this.age} years old.`);
+            }
+        }
+
+        user.greet();
+
+        // Create the same object using the Class keyword
+        class User {
+            constructor(name, age) {
+                this.name = name;
+                this.age = age;
+            }
+
+            greet() {
+                console.log(`Hello, my name is ${this.name} and I am ${this.age} years old.`);
+            }
+        }
+
+        const chris = new User('Chris', 50);
+        chris.greet();
+
+
+
+        // stringify is a method of the JSON object that converts an object to a string.
+        console.log(user);
+        console.log(`User in a string: ${user}`);
+        console.log(`User in a string using stringify: ${JSON.stringify(user)}`);
+
+
+
+
+        // Remember that you can define functions inside other functions in JavaScript. Used a lot in React.
+
+
+
+        // Arrow notation for functions. 
+        const tripple = (x) => {
+            console.log(`In the tripple function with x = ${x}`)
+            return x * 3;
+        }
+
+        // If the function is a single line, you can omit the curly braces and the return keyword.
+        const double = (x) => x * 2;
+
+        console.log(tripple(5));
+        console.log(double(5));
+
+
+
+
+        // Arrays
+        const hobbies = ['Sports', 'Cooking', 'Hiking', 'Reading'];
+        console.log(hobbies.map(hobby => `I like ${hobby}`));
+        console.log(`The index of 'Hiking' is ${hobbies.findIndex(hobby => hobby === 'Hiking')}`);
+
+        // The map function can be used to transform an item. Note the () around the {} in the arrow function.
+        console.log(hobbies.map(hobby => ({ hobby: hobby })));
+
+
+
+
+        // Destructuring arrays and objects.
+        // Can create an alias for the variable during destructuring. 
+        const [hobby1, hobby2] = hobbies;
+        console.log(`Result of detructuring the hobbies array: ${hobby1}, ${hobby2}`);
+        const { name, age } = user;
+        console.log(`Result of destructuring the user object: ${name}, ${age}`);
+
+        // Can also use destructuring in function parameters. The parameter for this function is a single object.
+        const destructuringExample = ({ name, age }) => {
+            console.log(`In the destructuringExample function with name = ${name} and age = ${age}`);
+        }
+        destructuringExample(user);
+
+
+
+
+        // The spread operator can be used to spread the elements of an iterable such as arrays, strings or objects.
+        console.log(`New array with the hobbies array and a new value: ${[...hobbies, 'Painting']}`);
+        const extendedUser = { ...user, isAdmin: true };
+        console.log(extendedUser);
+
+        // The spread operator can also be used to copy an object or array, and optionally update a property
+        const updatedUser = { ...user, age: 51 };
+        console.log(updatedUser);
+
+        // Or use the spread operator to separate out one property (name here) and leave the rest in a new object.
+        userFunction(extendedUser);
+        function userFunction({ name, ...other }) {
+            console.log(`In the userFunction with name = ${name} and age = ${other.age} and admin = ${other.isAdmin}`);
+            console.log(JSON.stringify(other));
+        }
+
+
+
+        // CONTROL STRUCTURES
+
+        for (const hobby of hobbies) {
+            console.log(`I like ${hobby}`);
+        }
+
+
+    </script>
+</body>
+
+</html>
