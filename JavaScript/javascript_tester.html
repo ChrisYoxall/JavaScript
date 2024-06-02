@@ -10,7 +10,7 @@
     <p>Open the console to see the results of running the JavaScript</p>
     <script>
 
-        // Rember to use === for comparison to avoid type coercion when using ==.
+        // Remember to use === for comparison to avoid type coercion when using ==.
 
         // console.log(1 == "1"); // true (loose equality operator coerces the string to a number)
         // console.log(1 === "1"); // false (strict equality operator doesn't perform type coercion)
@@ -21,7 +21,7 @@
 
 
 
-        // Remember Objects, Arrays, Functins, Dates, RegExp, Map, Set, WeakMap and WeakSets are reference types in JavaScript.
+        // Remember Objects, Arrays, Functions, Dates, RegExp, Map, Set, WeakMap and WeakSets are reference types in JavaScript.
 
 
 
@@ -67,15 +67,15 @@
 
 
         // Arrow notation for functions. 
-        const tripple = (x) => {
-            console.log(`In the tripple function with x = ${x}`)
+        const triple = (x) => {
+            console.log(`In the triple function with x = ${x}`)
             return x * 3;
         }
 
         // If the function is a single line, you can omit the curly braces and the return keyword.
         const double = (x) => x * 2;
 
-        console.log(tripple(5));
+        console.log(triple(5));
         console.log(double(5));
 
 
@@ -95,7 +95,7 @@
         // Destructuring arrays and objects.
         // Can create an alias for the variable during destructuring. 
         const [hobby1, hobby2] = hobbies;
-        console.log(`Result of detructuring the hobbies array: ${hobby1}, ${hobby2}`);
+        console.log(`Result of destructuring the hobbies array: ${hobby1}, ${hobby2}`);
         const { name, age } = user;
         console.log(`Result of destructuring the user object: ${name}, ${age}`);
 
