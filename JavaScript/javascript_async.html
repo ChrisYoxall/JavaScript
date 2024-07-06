@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Async</title>
+</head>
+
+<body>
+    <h1>Asynchronous Processing</h1>
+    <p>Open the console to see the results of running the JavaScript</p>
+    <script>
+        
+        // The yield operator is used to pause and resume a generator function. A generator function can be exited and
+        // later re-entered, with its context saved across re-entrances.
+        async function* generator() {
+            yield 'a';
+            yield 'b';
+            yield 'c';
+        }
+
+        // An AsyncGenerator object is returned by the async generator function that conforms to both the async
+        // iterable and async iterator protocols. This means the 'for await...of' syntax can be used.
+        // See https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Iteration_protocols#the_async_iterator_and_async_iterable_protocols
+        async function generate() {
+            let str = ``;
+            for await (const val of generator()) {
+                str = str + val;
+            }
+            console.log(str);
+        }
+
+        generate(); // Expected output: "abc"
+
+
+    </script>
+</body>
+
+</html>
