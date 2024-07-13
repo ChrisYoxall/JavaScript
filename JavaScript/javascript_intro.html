@@ -116,25 +116,22 @@
         // The spread operator can also be used to copy an object or array, and optionally update a property
         const updatedUser = { ...user, age: 51 };
         console.log(updatedUser);
-
-        // Or use the spread operator to separate out one property (name here) and leave the rest in a new object.
-        userFunction(extendedUser);
-        function userFunction({ name, ...other }) {
-            console.log(`In the userFunction with name = ${name} and age = ${other.age} and admin = ${other.isAdmin}`);
-            console.log(JSON.stringify(other));
-        }
-
+        
 
 
         // The rest operator allows a function to accept an indefinite number of arguments as an array.
-        // While it looks like the spread operator, it is used in a different context.
-        // Note that the rest operator must be the last parameter in the function definition.
-        // Often used in React to collect the remaining arguments (i.e. props) into an array.
+        // While it looks like the spread operator, it is used in a different context and must be the last parameter 
+        // in the function definition.
+        function sum(...numbers) {
+            return numbers.reduce((acc, current) => acc + current, 0);
+        }
+        console.log(`The sum of 1, 2, 3, 4, 5 is ${sum(1, 2, 3, 4, 5)}`);
+        
+        // The rest operator is often used in React to collect the remaining arguments (i.e. props) into an array.
         // Note how function is also being called automatically below.
         (function printHobbies([hobby1, hobby2, ...remainingHobbies]) {
             console.log(`In the printHobbies function with hobby1 = ${hobby1}, hobby2 = ${hobby2} and remainingHobbies = ${remainingHobbies}`);
         })(hobbies);
-
 
 
 
