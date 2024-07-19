@@ -32,6 +32,27 @@
         generate(); // Expected output: "abc"
 
 
+        // ES6 introduced async and await which makes the job of working with promises easier. The async keyword is
+        // applied to a function and turns any function into a promise. 
+        // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise
+
+        async function greet() {
+            return 'Hello';
+        }
+        const greeting = greet();
+        console.log(greeting); // Expected output: Promise {<fulfilled>: "Hello"}
+
+        // Using async allows a function to use the await keyword in front of any async promise-based function to pause
+        // your code at that point until the promise returns, i.e. its syntactic sugar for Promise.then()
+        (async function awaitGreet() {
+            console.log(await greet());
+        })();        
+        
+        // Here is the same functionality using the Promise.then() method
+        greet().then(response => console.log(response));
+        
+
+
     </script>
 </body>
 
