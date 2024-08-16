@@ -29,6 +29,7 @@ type StudentSummary = {
   comments: string[];
 };
 
+// Currying function to generate grade checker base functions
 const createGradeChecker = (failingGrade: string) => (grade: string) => grade !== failingGrade;
 const passingGrade = createGradeChecker('F');
 
@@ -57,8 +58,11 @@ const processStudentExamResults = (students: Student[]) => {
   const processStudentDetail = (student: Student): ProcessedStudentDetails => {
     const { name, age, results } = student;
     const averageScore = calculateAverageScore(results);
+
+    // spread operator with Set used to create list of unique grades and subject
     const allGrades = [...new Set(results.map((result) => result.grade))].join(', ');
     const allSubjects = [...new Set(results.map((result) => result.subject))].join(', ');
+    
     const comments = results.flatMap((result) => result.comments || []);
 
     return {
