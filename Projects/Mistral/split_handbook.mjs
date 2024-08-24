@@ -2,7 +2,7 @@
 
 import fs from 'node:fs/promises';
 import { RecursiveCharacterTextSplitter } from "langchain/text_splitter";
-import MistralClient from '@mistralai/mistralai';
+import { Mistral } from '@mistralai/mistralai';
 
 async function readTextFile(filePath) {
     try {
@@ -42,12 +42,13 @@ const index = 35;
 const txtArray = output.map(chunk => chunk.pageContent);
 console.log(txtArray[index]);
 
-const client = new MistralClient(process.env.MISTRAL_API_KEY);
+const apiKey = process.env.MISTRAL_API_KEY;
+const client = new Mistral({apiKey: apiKey});
 
-// Get the embeddings for one chunk
-const embeddingsResponse = await client.embeddings({
+//Get the embeddings for one chunk
+const embeddingsResponse = await client.embeddings.create({
     model: 'mistral-embed',
-    input: [txtArray[index]]
+    inputs: txtArray[index],
 });
 
 console.log(embeddingsResponse);

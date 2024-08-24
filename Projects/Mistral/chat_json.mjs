@@ -1,20 +1,21 @@
 // Get a JSON response from the Mistral API.
 
-import MistralClient from '@mistralai/mistralai';
+import { Mistral } from '@mistralai/mistralai';
 
 const apiKey = process.env.MISTRAL_API_KEY;
 
-const client = new MistralClient(apiKey);
+const client = new Mistral({apiKey: apiKey});
 
-const chatResponse = await client.chat({
-  model: 'open-mixtral-8x22b',
+const chatResponse = await client.chat.complete({
+  model: 'open-mixtral-8x7b',
   messages: [
       { role: 'system', content: 'Reply with JSON' },
       { role: 'user', content: 'What is the best French cheese?' }
   ],
-  response_format: {
+    responseFormat: {
       types: 'json_object'
   }  
 });
 
+//console.log(chatResponse);
 console.log(chatResponse.choices[0].message.content);
