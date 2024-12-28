@@ -1,7 +1,11 @@
 {
   "type": "module",
   "dependencies": {
-    "@mistralai/mistralai": "^1.0.4",
-    "langchain": "^0.2.17"
+    "@mistralai/mistralai": "^1.3.5",
+    "langchain": "^0.3.8"
+  },
+  "volta": {
+    "node": "22.10.0",
+    "pnpm": "9.15.1"
   }
 }

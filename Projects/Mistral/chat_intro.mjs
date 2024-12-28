@@ -8,7 +8,7 @@ const client = new Mistral({apiKey: apiKey});
 
 // models at https://docs.mistral.ai/getting-started/models/
 const chatResponse = await client.chat.complete({
-  model: 'open-mixtral-8x7b',
+  model: 'ministral-8b-latest',
   messages: [
       //{ role: 'system', content: 'You are a friendly cheese connoisseur. When asked about cheese reply concisely and humorously.' },
       { role: 'user', content: 'What is the best French cheese?' }

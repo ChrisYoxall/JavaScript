@@ -3,6 +3,7 @@
 Links:
 - Documentation: https://docs.mistral.ai/
 - Usage/Billing: https://console.mistral.ai/
+- Pricing: https://mistral.ai/technology/#pricing
 
 Set the API key in the environment variable `MISTRAL_API_KEY` before running the code:
 

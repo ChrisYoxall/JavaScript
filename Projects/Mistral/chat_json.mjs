@@ -7,7 +7,7 @@ const apiKey = process.env.MISTRAL_API_KEY;
 const client = new Mistral({apiKey: apiKey});
 
 const chatResponse = await client.chat.complete({
-  model: 'open-mixtral-8x7b',
+  model: 'ministral-8b-latest',
   messages: [
       { role: 'system', content: 'Reply with JSON' },
       { role: 'user', content: 'What is the best French cheese?' }
