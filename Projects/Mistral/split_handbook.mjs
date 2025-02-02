@@ -27,7 +27,7 @@ embeddings (better vectors). In general:
 This means you often ideally want the smallest size without loosing context. Can only work out the 'best' option
 through experimentation, and it will vary between different underlying data being chunked. 
 
-Note: Do any of the splitters break up text by sentance or paragraph? That seems more logical than guessing lengh of charcters. */
+Note: Do any of the splitters break up text by sentence or paragraph? That seems more logical than guessing length of characters. */
 
 async function splitDocument(doc) {
     const splitter = new RecursiveCharacterTextSplitter({

@@ -21,16 +21,9 @@ Much of this was taken from a Scrimba course https://v2.scrimba.com/intro-to-mis
 
 ## To Do ##
 
-Instead of calling the API, try running the a model locally. For example https://ollama.com/library/mixtral:8x7b
+Instead of calling the API, try running a model locally. For example https://ollama.com/library/mixtral:8x7b
 
 Not just the LLM model, but also use a model from Hugging Space to generate the embeddings.
-
-
-Look into Dev Containers. They are a VS Code thing but I think the Jetbrains tools all support them:
-
-    - https://docs.github.com/en/codespaces/setting-up-your-project-for-codespaces/adding-a-dev-container-configuration/introduction-to-dev-containers
-    - https://code.visualstudio.com/docs/devcontainers/containers
-    - https://www.mikekasberg.com/blog/2021/11/06/what-are-dev-containers.html
 
 Elasticsearch has some interesting RAG / LLM articles: https://www.elastic.co/what-is/vector-embedding#get-started-with-vector-embedding-with-elasticsearch
 
@@ -68,6 +61,18 @@ You need to split larger pieces of text into smaller chunks as a large number of
 semantic meaning.
 
 
+## Function Calling ##
+
+Function calling allows LLM to call additional functions to interact with the outside world. This opens the door to a wide range of
+possibilities, such as calling APIs, databases, or even running code on the local machine. This is the basis for AI agents to enable
+them to interact with the outside world on a users' behalf.
+
+See https://docs.mistral.ai/capabilities/function_calling/
+
+This is an interesting read: https://medium.com/binome/ai-agent-function-calling-what-really-matters-bfda0cb7cbe7
+
+
+
 ## Postgres ##
 
 Run Postgres in Docker:
@@ -97,4 +102,3 @@ Run the setup_db.sql script
 [Optional] Connect to the databases to check. Probably won't be prompted for password inside container
 
     psql -h localhost -p 5432 -U postgres
-
