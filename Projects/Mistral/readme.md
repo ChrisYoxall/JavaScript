@@ -40,7 +40,7 @@ layer that makes it much easier to use:
     - https://github.com/ggerganov/llama.cpp
     - https://namrata23.medium.com/run-llms-locally-or-in-docker-with-ollama-ollama-webui-379029060324  Am interested in running it in Docker if possible
 
-Some RAG examples using Postgress & the Llama model to generate embeddings:
+Some RAG examples using Postgres & the Llama model to generate embeddings:
 
     - https://pgdash.io/blog/rag-with-postgresql.html
     - https://www.enterprisedb.com/blog/rag-app-postgres-and-pgvector
@@ -62,70 +62,39 @@ vector space. For example 'dog' and 'puppy' should be closer together than 'dog'
 than 'dog' and 'spaceship'.
 
 Embedding is a mathematical concept that refers to placing one object into a different space. The vectors used for embeddings often
-have hundreds or thousands of dimensions, each refering to a different semantic or contextual meaning of the word/phrase.
+have hundreds or thousands of dimensions, each referring to a different semantic or contextual meaning of the word/phrase.
 
 You need to split larger pieces of text into smaller chunks as a large number of words (i.e. a full book) doesn't have a specific
 semantic meaning.
 
 
-## Postgress ##
+## Postgres ##
 
 Run Postgres in Docker:
 
     docker run --name embeddings --rm -e POSTGRES_PASSWORD=secretpassword -d -p 5432:5432 postgres
 
+Copy in scripts to configure the database:
+
+    docker cp DB_config/. embeddings:/
+
 Shell into Postgres container:
 
     docker exec -it embeddings /bin/bash
 
-Check Postgress version:
+Set execute permission on vector_extension.sh file
+
+    chmod +x vector_extension.sh
+
+[Optional] Check Postgres version
 
     psql --version
 
-Install Git & tools to build pgvector (note version number for Postress development files):
+Run the setup_db.sql script
 
-    apt-get update && apt-get install git build-essential postgresql-server-dev-17
+    psql -h localhost -p 5432 -U postgres -f ./setup_db.sql
 
-Compile & install the pgvector Postress extension (as per https://github.com/pgvector/pgvector):
-
-    cd /tmp
-    git clone --branch v0.8.0 https://github.com/pgvector/pgvector.git # note version number
-    cd pgvector
-    make
-    make install
-
-Connect to Postgress instance using 'psql' (likely not prompted for password inside container):
+[Optional] Connect to the databases to check. Probably won't be prompted for password inside container
 
     psql -h localhost -p 5432 -U postgres
-
-Create database:
-
-    CREATE DATABASE embeddemo;
-
-Create new user so don't need superuser password:
-
-    CREATE ROLE embeduser WITH LOGIN PASSWORD 'pa55w0rd';
-
-Change to the 'embeddemo' database:
-
-    \c embeddemo
-
-Enable the pgvector extension. Once enabled you can confirm its enabled by doing '\dx':
-
-    CREATE EXTENSION vector;
-
-Create a table to store the handbook documents. The number after Vector is the number of dimensions in the generated vector which may change
-if using a different model to generate the vectors:
-
-    CREATE TABLE handbook_docs (id bigserial primary key, content text, embedding vector(1024));
-
-Grant the 'embeduser' user access to the table:
-
-    GRANT SELECT, INSERT, UPDATE, DELETE ON TABLE handbook_docs TO embeduser;
-
-As using 'bigserial' type for 'id' need sequence permissions:
-
-    GRANT USAGE, SELECT ON SEQUENCE handbook_docs_id_seq TO embeduser;
-
-
 
