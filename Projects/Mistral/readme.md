@@ -7,7 +7,7 @@ Links:
 
 Set the API key in the environment variable `MISTRAL_API_KEY` before running the code:
 
-    export MISTRAL_API_KEY=xxxxxxxx
+    export MISTRAL_API_KEY=xxxxxxx
 
     or 
 
@@ -38,7 +38,6 @@ Some RAG examples using Postgres & the Llama model to generate embeddings:
     - https://pgdash.io/blog/rag-with-postgresql.html
     - https://www.enterprisedb.com/blog/rag-app-postgres-and-pgvector
     - https://www.enterprisedb.com/blog/what-is-pgvector
-    - https://www.enterprisedb.com/blog/what-is-pgvector
 
 
 Think I'd much rather write this in Python rather than JavaScript / Node
@@ -63,9 +62,11 @@ semantic meaning.
 
 ## Function Calling ##
 
-Function calling allows LLM to call additional functions to interact with the outside world. This opens the door to a wide range of
-possibilities, such as calling APIs, databases, or even running code on the local machine. This is the basis for AI agents to enable
-them to interact with the outside world on a users' behalf.
+Function calling tells a LLM about that additional functions that are available to interact with the outside world to
+get more information. The LLM can then decide if one of these functions should be used to help respond to the current
+prompt. This opens the door to a wide range of possibilities, such as calling APIs, databases, or even running code on
+the local machine. This is the basis for AI agents to enable them to interact with the outside world on behalf of
+a user.
 
 See https://docs.mistral.ai/capabilities/function_calling/
 

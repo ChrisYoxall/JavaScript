@@ -1,6 +1,14 @@
 import { Mistral } from '@mistralai/mistralai';
 import pg from 'pg';
 
+/*
+
+Note that this requires the handbook to be chunked and added to the database. This is done
+by the split_handbook.mjs script.
+
+*/
+
+
 // 1. Getting the user input
 const input = "December 25th is on a Sunday, do I get any extra time off to account for that?";
 
