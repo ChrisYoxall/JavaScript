@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
     <title>Intro</title>
@@ -99,6 +99,10 @@
         const { name, age } = user;
         console.log(`Result of destructuring the user object: ${name}, ${age}`);
 
+        // Can skip elements in the array during destructuring.
+        const [firstHobby, , thirdHobby] = hobbies;
+        console.log(`Some hobbies: ${firstHobby}, ${thirdHobby}`);
+
         // Can also use destructuring in function parameters. The parameter for this function is a single object.
         const destructuringExample = ({ name, age }) => {
             console.log(`In the destructuringExample function with name = ${name} and age = ${age}`);
@@ -124,11 +128,15 @@
         // is the opposite of the spread operator as it condenses multiple elements into a single element while
         // the spread operator expands an array into its elements.    
         // While it looks like the spread operator, its context allows it to be identified, and must be the last
-        // parameter in the function definition.
+        // parameter in the function definition or an assignment statement.
         function sum(...numbers) {
             return numbers.reduce((acc, current) => acc + current, 0);
         }
         console.log(`The sum of 1, 2, 3, 4, 5 is ${sum(1, 2, 3, 4, 5)}`);
+
+        const [colour1, ...remainingColours] = ['red', 'green', 'blue', 'yellow'];
+        console.log(`The first colour is ${colour1} and the remaining colours are ${remainingColours}`);
+
         
         // The rest operator is often used in React to collect the remaining arguments (i.e. props) into an array.
         // Note how function is also being called automatically below.
@@ -148,7 +156,7 @@
 
         // Causes JavaScript execution to pause. Will be able to use browser developer tools to examine the variables
         // and step through the code.
-        //debugger;
+        debugger;
         
     </script>
 </body>
