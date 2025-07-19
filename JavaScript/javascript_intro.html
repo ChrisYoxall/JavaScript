@@ -22,6 +22,8 @@
 
 
         // Remember Objects, Arrays, Functions, Dates, RegExp, Map, Set, WeakMap and WeakSets are reference types in JavaScript.
+        // On the other hand, Strings, Numbers, and Booleans are all primitives. JavaScript primitives can't be edited but can
+        // be overwritten by assigning a new value.  userMessage and store "Hello" there, but that's a brand new st
 
 
 
@@ -113,9 +115,8 @@
 
 
         // The spread operator expands an iterable in places where zero or more arguments (for function calls) or
-        // elements (for array literals) are expected
-        // It can be used to copy an array or object, combine multiple arrays or objects, or easily extend an array or
-        // object.
+        // elements (for array literals) are expected.
+        // It can be used to copy an array or object, combine multiple arrays or objects, or extend an array or object.
         console.log(`New array with the hobbies array and a new value: ${[...hobbies, 'Painting']}`);
         const extendedUser = { ...user, isAdmin: true };
         console.log(extendedUser);
@@ -127,7 +128,7 @@
         // The rest operator allows a function to accept an indefinite number of arguments as an array. In a way it
         // is the opposite of the spread operator as it condenses multiple elements into a single element while
         // the spread operator expands an array into its elements.    
-        // While it looks like the spread operator, its context allows it to be identified, and must be the last
+        // While it looks like the spread operator, its context allows it to be identified as it must be the last
         // parameter in the function definition or an assignment statement.
         function sum(...numbers) {
             return numbers.reduce((acc, current) => acc + current, 0);
@@ -138,8 +139,8 @@
         console.log(`The first colour is ${colour1} and the remaining colours are ${remainingColours}`);
 
         
-        // The rest operator is often used in React to collect the remaining arguments (i.e. props) into an array.
-        // Note how function is also being called automatically below.
+        // The rest operator is often used in React to collect the remaining arguments (i.e., props) into an array.
+        // Note how the function is also being called automatically below.
         (function printHobbies([hobby1, hobby2, ...remainingHobbies]) {
             console.log(`In the printHobbies function with hobby1 = ${hobby1}, hobby2 = ${hobby2} and remainingHobbies = ${remainingHobbies}`);
         })(hobbies);
