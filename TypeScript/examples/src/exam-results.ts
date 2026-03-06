@@ -59,11 +59,13 @@ const processStudentExamResults = (students: Student[]) => {
     const { name, age, results } = student;
     const averageScore = calculateAverageScore(results);
 
-    // spread operator with Set used to create list of unique grades and subject
-    const allGrades = [...new Set(results.map((result) => result.grade))].join(', ');
-    const allSubjects = [...new Set(results.map((result) => result.subject))].join(', ');
-    
-    const comments = results.flatMap((result) => result.comments || []);
+    // spread operator with Set used to create a list of unique grades and subject
+    const allGrades: string = [...new Set(results.map((result: ExamResult) => result.grade))].join(', ');
+    const allSubjects: string = [...new Set(results.map((result: ExamResult) => result.subject))].join(', ');
+
+    const comments: string[] = results.flatMap((result): string[] =>
+        result.comments ? [result.comments] : []
+    );
 
     return {
       name,
