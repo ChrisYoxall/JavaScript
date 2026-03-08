@@ -1,18 +1,18 @@
 // Example taken from https://levelup.gitconnected.com/5-pro-tips-from-a-staff-engineers-typescript-code-1680adb4eaf8
 
 // Types Definition
-type ExamResult = {
+interface ExamResult {
   subject: string;
   score: number;
   grade: string;
   comments?: string;
-};
+}
 
-type Student = {
+interface Student {
   name: string;
   age: number;
   results: ExamResult[];
-};
+}
 
 type ProcessedStudentDetails = Pick<Student, 'name' | 'age'> & {
   averageScore: number;
@@ -21,13 +21,13 @@ type ProcessedStudentDetails = Pick<Student, 'name' | 'age'> & {
   comments: string[];
 };
 
-type StudentSummary = {
+interface StudentSummary {
   totalStudents: number;
   averageScore: number;
   allGrades: string;
   allSubjects: string;
   comments: string[];
-};
+}
 
 // Currying function to generate grade checker base functions
 const createGradeChecker = (failingGrade: string) => (grade: string) => grade !== failingGrade;
