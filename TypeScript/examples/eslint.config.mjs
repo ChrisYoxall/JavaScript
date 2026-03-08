@@ -3,19 +3,18 @@ import { defineConfig } from 'eslint/config';
 import tseslint from 'typescript-eslint';
 
 export default defineConfig(
-  // 1. Global Ignores
+
+  // Global Ignores
   {
-    ignores: ['dist/**', 'node_modules/**'],
+    ignores: ['dist/**', 'node_modules/**', '**/*.mjs'],
   },
 
-  // 2. Base ESLint recommended
-  eslint.configs.recommended,
 
-  // 3. Type-checked rules for TS files only
+  // Type-checked rules for TS files only
   {
     files: ['**/*.ts', '**/*.tsx'],
     extends: [
-      ...tseslint.configs.recommendedTypeChecked,
+      ...tseslint.configs.strictTypeChecked,
       ...tseslint.configs.stylisticTypeChecked,
     ],
     languageOptions: {
@@ -25,9 +24,4 @@ export default defineConfig(
     },
   },
 
-  // 4. Disable type-checked rules for JS config files
-  {
-    files: ['**/*.js', '**/*.mjs'],
-    extends: [tseslint.configs.disableTypeChecked],
-  },
 );
